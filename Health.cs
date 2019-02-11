@@ -27,6 +27,7 @@ namespace ConfigCat.Function
             string json = await req.ReadAsStringAsync();
             var skillRequest = JsonConvert.DeserializeObject<SkillRequest>(json);
 
+            // Comment this line while testing locally.
             var isValid = await ValidateRequestAsync(req, skillRequest);
             if (!isValid)
             {
