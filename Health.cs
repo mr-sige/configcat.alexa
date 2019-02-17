@@ -1,19 +1,18 @@
 using System;
-using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using Alexa.NET;
 using Alexa.NET.Request;
 using Alexa.NET.Request.Type;
 using Alexa.NET.Response;
-using Alexa.NET;
-using System.Net.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
-namespace ConfigCat.Function
+namespace configcat.alexa
 {
     public static class Health
     {
