@@ -48,14 +48,15 @@ namespace configcat.alexa
 
                 if (intentRequest.Intent.Name == "Health")
                 {
-                    var getResponse = await httpClient.GetAsync("https://configcat.com");
-                    if (getResponse.IsSuccessStatusCode)
+                    var healthCheckResult = await httpClient.GetAsync("https://api.configcat.com/api/v1/health");
+                    if (!healthCheckResult.IsSuccessStatusCode)
                     {
-                        response = ResponseBuilder.Tell("All systems are green!");
+                        response = ResponseBuilder.Tell("Calling health check endpoint failed.");
                     }
                     else
                     {
-                        response = ResponseBuilder.Tell("There is something wrong with the website.");
+                        var content = await healthCheckResult.Content.ReadAsStringAsync();
+                        response = ResponseBuilder.Tell("The server responded with: " + content);
                     }
                 }
                 else if (intentRequest.Intent.Name == "AMAZON.HelpIntent")
